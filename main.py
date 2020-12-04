@@ -6,7 +6,7 @@ import os
 def rename_files(source_list, source_directory):
     i = 0
     for item in source_list:
-        os.rename(source_directory + '/' + item, source_directory + '/' + str(i) + '.jpg')
+        os.rename(source_directory + '/' + item, source_directory + '/' + str(i).zfill(4) + '.jpg')
         i += 1
 
 
@@ -26,7 +26,7 @@ def resize_image(source_list, source_directory):
 
 if __name__ == "__main__":
     # TODO: Need to process russian symbols and spaces in the path of files
-    directory = r'D:/OPISI/opisiF/F112_2'
+    directory = r'D:/OPISI/opisiF/F52_2'
     list_of_files = os.listdir(directory)
     length_of_list = len(list_of_files)
     if list_of_files[0] == 'Thumbs.db':
@@ -36,4 +36,5 @@ if __name__ == "__main__":
         os.remove(directory + '/' + list_of_files[length_of_list - 1])
         list_of_files.pop()
     rename_files(list_of_files, directory)
+    list_of_files = os.listdir(directory)
     resize_image(list_of_files, directory)
